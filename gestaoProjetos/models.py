@@ -10,7 +10,20 @@ class Projeto(models.Model):
     linkGoogleDrive = models.URLField(blank=True)
     linkSlack = models.URLField(blank=True)
     linkTaiga = models.URLField(blank=True)
+
+    # Enums
+    SITUACAO_CHOICES = [('P', 'Pendente'), ('E', 'Em andamento'), ('F', 'Finalizado')]
+    FASE_CHOICES = [('I', 'Inception'), ('C', 'Concepção'), ('D', 'Desenvolvimento'), ('M', 'Implantação'), ('T', 'TLE')]
+    PRIORIDADE_CHOICES = [('B', 'Baixa'), ('M', 'Média'), ('A', 'Alta')]
+    METODOLOGIA_CHOICES = [('C', 'Cascata'), ('I', 'Iterativo'), ('A', 'Agil'), ('E', 'Evolutivo')]
+    situacao = models.CharField(max_length=1, choices=SITUACAO_CHOICES, default='P')
+    fase = models.CharField(max_length=1, choices=FASE_CHOICES, default='I')
+    prioridade = models.CharField(max_length=1, choices=PRIORIDADE_CHOICES, default='B')
+    metodologia = models.CharField(max_length=1, choices=METODOLOGIA_CHOICES, default='C')
+
+    # Relacionamentos
     # cliente = models.ForeignKey('gestaoProjetos.EntidadeExterna', models.CASCADE)
+
 
     def __str__(self):
       return self.nome
