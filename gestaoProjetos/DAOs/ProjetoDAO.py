@@ -20,13 +20,13 @@ class ProjetoDAO(models.Manager):
         return projeto
 
     def inserir(self, projeto):
-        pass
+        projeto.save()
 
     def excluir(self, projeto):
-        pass
+        projeto.delete()
 
     def alterar(self, projeto):
-        pass
+        projeto.save()
 
     def consultar(self, id_projeto):
         from django.db import connection
