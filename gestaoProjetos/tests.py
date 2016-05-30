@@ -38,3 +38,11 @@ class ProjetoDAOTest(TestCase):
         projetos = Projeto.objects.consultarTodos()
         self.assertEqual(len(projetos), 1)
         self.assertEqual(projetos[0].nome, "LifeBoxTest")
+
+    def test_consultarPorPrioridade(self):
+        projetos_fracos = Projeto.objects.consultarPorPrioridade('B')
+        self.assertEqual(len(projetos_fracos), 1)
+        self.assertEqual(projetos_fracos[0].nome, "LifeBoxTest")
+
+        projetos_fortes = Projeto.objects.consultarPorPrioridade('A')
+        self.assertEqual(len(projetos_fortes), 0)

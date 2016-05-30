@@ -49,26 +49,22 @@ class ProjetoDAO(models.Manager):
         """)
         projetos = []
         for linha in cursor.fetchall():
-            projeto = self.model(
-                id=linha[0],
-                nome=linha[1],
-                descricao=linha[2],
-                inicio=linha[3],
-                fim=linha[4],
-                progresso=linha[5],
-                linkGithub=linha[6],
-                linkGoogleDrive=linha[7],
-                linkSlack=linha[8],
-                linkTaiga=linha[9],
-                fase=linha[10],
-                metodologia=linha[11],
-                prioridade=linha[12],
-                situacao=linha[13])
+            projeto = self.util_instanciar_projeto(linha)
             projetos.append(projeto)
         return projetos
 
-    def consultarTodosDeUmaEE(self, entidade_externa):
-        pass
+#    def consultarTodosDeUmaEE(self, entidade_externa):
+#        pass
 
     def consultarPorPrioridade(self, prioridade):
-        pass
+        from django.db import connection
+        cursor = connection.cursor()
+        cursor.execute("""
+            SELECT *
+            FROM gestaoprojetos_projeto p
+            WHERE p.prioridade = """ + '"' + prioridade + '"')
+        projetos = []
+        for linha in cursor.fetchall():
+            projeto = self.util_instanciar_projeto(linha)
+            projetos.append(projeto)
+        return projetos
