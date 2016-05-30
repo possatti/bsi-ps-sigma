@@ -29,3 +29,13 @@ class Projeto(models.Model):
 
     def __str__(self):
       return self.nome
+
+class EntidadeExterna(models.Model):
+    nome = models.CharField(max_length=50)
+    pessoaContato = models.CharField(max_length=80)
+    telefone = models.CharField(max_length=11)
+    endereco = models.CharField(max_length=100)
+    
+    def __str__(self):
+      return self.nome
+
