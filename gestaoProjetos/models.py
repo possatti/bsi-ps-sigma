@@ -1,4 +1,5 @@
 from django.db import models
+from .DAOs.ProjetoDAO import ProjetoDAO
 
 class Projeto(models.Model):
     nome = models.CharField(max_length=50)
@@ -24,6 +25,7 @@ class Projeto(models.Model):
     # Relacionamentos
     # cliente = models.ForeignKey('gestaoProjetos.EntidadeExterna', models.CASCADE)
 
+    objects = ProjetoDAO()
 
     def __str__(self):
       return self.nome
