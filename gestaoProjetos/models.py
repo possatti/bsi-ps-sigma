@@ -27,6 +27,9 @@ class Projeto(models.Model):
 
     objects = ProjetoDAO()
 
+    def progresso_porcentagem(self):
+        return int(self.progresso * 100)
+
     def __str__(self):
       return self.nome
 
@@ -35,7 +38,7 @@ class EntidadeExterna(models.Model):
     pessoaContato = models.CharField(max_length=80)
     telefone = models.CharField(max_length=11)
     endereco = models.CharField(max_length=100)
-    
+
     def __str__(self):
       return self.nome
 

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %} {{ projeto.nome }} - Sigma {% endblock %}
+
+{% block body %}
+
+<h1> {{ projeto.nome | upper }} </h1>
+<br>
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Nome</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.nome}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Descrição</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.descricao}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Inicio</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.inicio}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Fim</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.fim}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Progresso</label>
+    <div class="col-sm-10">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{projeto.progresso_porcentagem}}%;">
+          {{projeto.progresso_porcentagem}}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Github</label>
+    <div class="col-sm-10">
+      <a class="form-control-static">{{projeto.linkGithub}}</a>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Google Drive</label>
+    <div class="col-sm-10">
+      <a class="form-control-static">{{projeto.linkGoogleDrive}}</a>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Slack</label>
+    <div class="col-sm-10">
+      <a class="form-control-static">{{projeto.linkSlack}}</a>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Taiga</label>
+    <div class="col-sm-10">
+      <a class="form-control-static">{{projeto.linkTaiga}}</a>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Situacao</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.get_situacao_display}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Fase</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.get_fase_display}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Prioridade</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.get_prioridade_display}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Metodologia</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{projeto.get_metodologia_display}}</p>
+    </div>
+  </div>
+</div>
+
+<h2>Participantes</h2>
+<br>
+<h2>Patrocinadores</h2>
+<br>
+<h2>Tecnologias Usadas</h2>
+<br>
+
+{% endblock %}
